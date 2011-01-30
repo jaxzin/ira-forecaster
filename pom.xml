@@ -90,12 +90,14 @@
                 <artifactId>maven-license-plugin</artifactId>
                 <version>1.9.0</version>
                 <configuration>
+                    <strictCheck>true</strictCheck>
                     <header>${basedir}/src/license/header.txt</header>
                     <includes>
                         <include>src/**</include>
                     </includes>
                     <properties>
-                        <year>${project.inceptionYear}</year>
+                        <year>${project.inceptionYear}-2011</year>
+                        <displayName>Brian R. Jackson</displayName>
                         <email>brian@jaxzin.com</email>
                     </properties>
                 </configuration>
