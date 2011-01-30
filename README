@@ -2,5 +2,5 @@ A interactive Java applet for forecasting retirement investments.
 
 The current version will not build because the following dependencies don't currently exist in Maven Central. Install them manually into your local repository from the src/lib directory.
 
-javolution:javolution:3.3.6:jar
-jscience:jscience:2.0.2:jar
+mvn install:install-file -DgroupId=javolution -DartifactId=javolution -Dversion=3.3.6 -Dpackaging=jar -Dfile=src/lib/javolution.jar 
+vn install:install-file -DgroupId=jscience -DartifactId=jscience -Dversion=2.0.2 -Dpackaging=jar -Dfile=src/lib/jscience.jar
