@@ -41,7 +41,7 @@ public class SGSSimulateWithdrawalsTest extends AbstractSGSSimulateTest {
         // Setup data about the market
         cd.sim.getDomain().setRor1(Quantity.<Dimensionless>valueOf("0 %"));
         cd.sim.getDomain().setRor2(Quantity.<Dimensionless>valueOf("0 %"));
-        cd.sim.getDomain().setRiskFreeRate(Quantity.<Dimensionless>valueOf("3 %"));
+        cd.sim.getDomain().setRiskFreeRate(Quantity.<Dimensionless>valueOf("0 %"));
         cd.sim.getDomain().setAdjustForInflation(false);
 
         // Setup data about retirement
