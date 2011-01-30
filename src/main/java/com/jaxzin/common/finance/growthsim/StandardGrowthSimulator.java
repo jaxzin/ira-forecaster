@@ -45,13 +45,13 @@ public class StandardGrowthSimulator extends AbstractGrowthSimulator {
         Dimensionless riskFree = Dimensionless.ONE;
 //        System.out.println("Starting simulation");
         moneys.add(value);
-//        System.out.println("0: "+ value.getAmount() + "±"+ value.getAbsoluteError() + " "+ value.getUnit());
+//        System.out.println("0: "+ value.getAmount() + "Â±"+ value.getAbsoluteError() + " "+ value.getUnit());
         for(int i = 0; i < employedYears; i++) {
 
             // Calculate investment increase, (1 + ror) * value
             // todo: should this be after contributions?
             value = (Money) ror1Plus1.times(value);
-//            System.out.println((i+1)+"- interest: "+ value.getAmount() + "±"+ value.getAbsoluteError() + " "+ value.getUnit());
+//            System.out.println((i+1)+"- interest: "+ value.getAmount() + "Â±"+ value.getAbsoluteError() + " "+ value.getUnit());
 
             // todo: simulate contributions more accurately instead of lump sum at end of year
             // Add the contribution from base salary and bonus
@@ -66,28 +66,28 @@ public class StandardGrowthSimulator extends AbstractGrowthSimulator {
                     contribution.plus(contributionBonus);
 
             value = (Money) value.plus(totalContribution);
-//            System.out.println((i+1)+"- plus contrib: "+ value.getAmount() + "±"+ value.getAbsoluteError() + " "+ value.getUnit());
+//            System.out.println((i+1)+"- plus contrib: "+ value.getAmount() + "Â±"+ value.getAbsoluteError() + " "+ value.getUnit());
 
 
             // Add the contribution from the employer matching
             Money employerMatch = (Money)contribution.times(domain.getEmployerMatch());
             Money totalEmployerMatch = (Money) employerMatch.plus(contributionBonus.times(domain.getEmployerMatch()));
             value = (Money) value.plus(totalEmployerMatch);
-//            System.out.println((i+1)+"- plus match: "+ value.getAmount() + "±"+ value.getAbsoluteError() + " "+ value.getUnit());
+//            System.out.println((i+1)+"- plus match: "+ value.getAmount() + "Â±"+ value.getAbsoluteError() + " "+ value.getUnit());
 
             // Determine intra-year interest on the contribution
             Money intraYearInterestContr = intraYearInterest((Money)contribution.plus(employerMatch), domain.getPaychecksPerYear(), domain.getRor1());
             value = (Money) value.plus(intraYearInterestContr);
-//            System.out.println((i+1)+"- plus intrayear: "+ value.getAmount() + "±"+ value.getAbsoluteError() + " "+ value.getUnit());
+//            System.out.println((i+1)+"- plus intrayear: "+ value.getAmount() + "Â±"+ value.getAbsoluteError() + " "+ value.getUnit());
 
             if(value.isLessThan(ZERO_DOLLARS)) {
                 value = ZERO_DOLLARS;
             }
-//            System.out.println((i+1)+"- floor: "+ value.getAmount() + "±"+ value.getAbsoluteError() + " "+ value.getUnit());
+//            System.out.println((i+1)+"- floor: "+ value.getAmount() + "Â±"+ value.getAbsoluteError() + " "+ value.getUnit());
 
 
             // Record the IRA value at end of year
-//            System.out.println((i+1)+": "+ value.getAmount() + "±"+ value.getAbsoluteError() + " "+ value.getUnit());
+//            System.out.println((i+1)+": "+ value.getAmount() + "Â±"+ value.getAbsoluteError() + " "+ value.getUnit());
             moneys.add(domain.isAdjustForInflation() ? (Money) value.divide(riskFree) : value);
 
             // Get a raise

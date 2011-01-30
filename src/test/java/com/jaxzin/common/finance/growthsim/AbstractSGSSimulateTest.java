@@ -95,7 +95,7 @@ public abstract class AbstractSGSSimulateTest extends TestCase {
         buf.append('[');
         for (Money money : moneys) {
             buf.append(money.getAmount())
-               .append("±")
+               .append("Â±")
                .append(money.getAbsoluteError())
                .append(' ')
                .append(money.getUnit())
